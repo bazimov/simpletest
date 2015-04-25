@@ -85,6 +85,6 @@ if [ -f /opt/resolve.txt ]; then
 fi 
 
 scriptname=$(basename $0) 
-cat $scriptname | grep "^#" | grep -v "/bin/bash"|grep -v "This sets up" | tee /tmp/questions.txt 
+sed '1,4d' $scriptname|grep "^#" > /tmp/questions.txt && cat /tmp/questions.txt |tr '#' ' '
 echo 
 echo "Test questions are above and saved to '/tmp/questions.txt' file."
